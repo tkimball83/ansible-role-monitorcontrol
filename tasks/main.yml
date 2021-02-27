@@ -2,7 +2,7 @@
 - name: Ensure the {{ monitorcontrol_package }} package is installed
   tags: monitorcontrol
   homebrew_cask:
-    name: "{{ monitorcontrol_package|lower }}"
+    name: "{{ monitorcontrol_package | lower }}"
     state: present
 
 - name: Applying {{ monitorcontrol_package }} macOS defaults

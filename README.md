@@ -30,19 +30,19 @@ None
         - role: tkimball83.monitorcontrol
           monitorcontrol_defaults:
             - name: allScreens
-              type: boolean
+              type: bool
               value: true
             - name: appAlreadyLaunched
-              type: boolean
+              type: bool
               value: true
             - name: listenFor
               type: int
               value: 0
             - name: lowerContrast
-              type: boolean
+              type: bool
               value: false
             - name: showContrast
-              type: boolean
+              type: bool
               value: false
 
 ## License
