@@ -1,0 +1,26 @@
+---
+- name: Ensure the {{ monitorcontrol_package }} package is installed
+  tags: monitorcontrol
+  homebrew_cask:
+    name: "{{ monitorcontrol_package|lower }}"
+    state: present
+
+- name: Applying {{ monitorcontrol_package }} macOS defaults
+  tags: monitorcontrol
+  osx_defaults:
+    array_add: "{{ item.array_add | default(omit) }}"
+    domain: "{{ monitorcontrol_domain }}"
+    host: "{{ item.host | default(omit) }}"
+    key: "{{ item.name }}"
+    path: "{{ item.path | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
+    type: "{{ item.type | default('string') }}"
+    value: "{{ item.value }}"
+  loop: "{{ monitorcontrol_defaults }}"
+  loop_control:
+    label: "{{ item.name }}"
+  when:
+    - item.name is defined
+    - item.value is defined
+    - monitorcontrol_defaults|length > 0
+...
